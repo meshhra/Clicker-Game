@@ -5,6 +5,8 @@ public class Clicker : MonoBehaviour
 {
     public event Action OnClickerPressed;
     public static Clicker Instance { get; private set; }
+
+
     private void Awake()
     {
         if(Instance == null)
