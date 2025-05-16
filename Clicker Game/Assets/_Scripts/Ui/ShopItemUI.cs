@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ShopItemUI : MonoBehaviour
@@ -20,18 +21,18 @@ public class ShopItemUI : MonoBehaviour
         itemCost.text = $"${itemSo.cost}";
     }
 
-    //private void Update()
-    //{
-    //    if (!_itemSo) return;
-    //    if(GameManager.Instance.Score < _itemSo.cost)
-    //    {
-    //        GetComponent<Button>().interactable = false;
-    //    }
-    //    else
-    //    {
-    //        GetComponent<Button>().interactable = true;
-    //    }
-    //}
+    private void Update()
+    {
+        if (!_itemSo) return;
+        if (GameManager.Instance.Score < _itemSo.cost)
+        {
+            GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            GetComponent<Button>().interactable = true;
+        }
+    }
 
     public void OnClick()
     {
@@ -41,5 +42,8 @@ public class ShopItemUI : MonoBehaviour
             ItemBought?.Invoke(_itemSo.id);
             GameManager.Instance.DecreaseScoreBy(_itemSo.cost);
         }
+        //tComponent<Button>().
+
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

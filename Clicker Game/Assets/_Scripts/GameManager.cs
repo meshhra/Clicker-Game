@@ -4,12 +4,20 @@ using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
-{
+{   
     public static GameManager Instance { get; private set; }
 
     private int _score;
     private int _clickPower = 1;
     private int _additionPerSecond;
+
+    private float _multiplayerMeter;
+    [SerializeField] private float _multiplayerMeterIncrement = 0.4f;
+    [SerializeField] private float _multiplayerMeterDecrement = 0.35f;
+    [SerializeField] private float multiplayerThreshHold = 0.96f;
+    [SerializeField] private float _multiplayerMeterMax = 2;
+
+    [SerializeField] private MeterUI meterUI;
 
     public int Score => _score;
     public int ClickPower => _clickPower;
@@ -17,6 +25,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreTextMesh;
     [SerializeField] private TextMeshProUGUI _velocityTextMesh;
     [SerializeField] private TextMeshProUGUI _clickpowertextMesh;
+
+    private bool _isMultiplayerEnabled;
 
     private void Awake()
     {
@@ -49,11 +59,28 @@ public class GameManager : MonoBehaviour
         }
         _velocityTextMesh.text = $"${_additionPerSecond} per second";
         _clickpowertextMesh.text = $"${ClickPower} / Click";
-    }
 
+        if (_multiplayerMeter > 0)
+        {
+            _multiplayerMeter -= _multiplayerMeterDecrement * Time.deltaTime;
+            if (GetMeterLerp() < 0.7f) _isMultiplayerEnabled = false;
+        }
+        else
+        {
+            _multiplayerMeter = 0;
+        }
+
+        meterUI.SetImageFill(_multiplayerMeter, _multiplayerMeterMax);
+        
+    }
+    
     private void Clicker_OnClikerPressed()
     { 
-        IncreaseScoreBy(ClickPower);
+        IncreaseScoreBy(_isMultiplayerEnabled ? (int) (ClickPower * _multiplayerMeterMax): ClickPower );
+        if (_multiplayerMeter >= _multiplayerMeterMax) return;
+        _multiplayerMeter += _multiplayerMeterIncrement;
+
+        if (GetMeterLerp() > multiplayerThreshHold) _isMultiplayerEnabled = true;
     }
 
     public void IncreaseScoreBy(int amount)
@@ -77,5 +104,10 @@ public class GameManager : MonoBehaviour
     public void IncreaseidelSppedBy(int amount)
     {
         _additionPerSecond += amount;
+    }
+
+    private float GetMeterLerp()
+    {
+        return Mathf.InverseLerp(0, _multiplayerMeterMax, _multiplayerMeter);
     }
 }
