@@ -672,7 +672,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 0.614
+  m_FillAmount: 0.796
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1041,8 +1041,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0686e68d5b1ca664db49818a4ce746a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _multiplayerMeterIncrement: 0.2
-  _multiplayerMeterDecrement: 1
+  _multiplayerMeterIncrement: 0.23
+  _multiplayerMeterDecrement: 0.96
   multiplayerThreshHold: 0.96
   _multiplayerMeterMax: 2
   meterUI: {fileID: 1050813921}
