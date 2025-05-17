@@ -12,5 +12,11 @@ public class IncreaseVelocitySO : ShopItemSO
     {
         GameManager.Instance.IncreaseIdelSpeedBy(_effectAmmount);
     }
-
+    
+    public override void IncreaseEffectAmount()
+    {
+        int value = (int) (_effectAmmount  * 2.456f);
+        value = (value < 1)? 0 : value;
+        _effectAmmount += value;
+    }
 }

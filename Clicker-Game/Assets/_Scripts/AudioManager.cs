@@ -21,6 +21,6 @@ public class AudioManager : MonoBehaviour
 
     private void Clicker_OnClickerPressed()
     {
-        _audioSource.PlayOneShot(clickSounds[Random.Range(0, clickSounds.Count)], 10f);
+        _audioSource.PlayOneShot(clickSounds[Random.Range(0, clickSounds.Count)], 1f);
     }
 }
