@@ -7,7 +7,7 @@ public class Clicker : MonoBehaviour
     public static Clicker Instance { get; private set; }
     private void Awake()
     {
-        if(Instance == null)
+        if(!Instance)
         {
             Instance = this;
         }
@@ -17,9 +17,11 @@ public class Clicker : MonoBehaviour
         }
     }
 
+
     private void OnMouseDown()
     {
         OnClickerPressed?.Invoke();
+        GetComponent<Animator>().CrossFadeInFixedTime("Click", 0.1f,0 );
         //Debug.Log("clicker was just pressed");
     }
 }

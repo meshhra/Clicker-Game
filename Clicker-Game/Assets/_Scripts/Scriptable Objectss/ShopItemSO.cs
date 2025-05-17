@@ -26,13 +26,14 @@ public class ShopItemSO : ScriptableObject
 
     public virtual void IncreaseEffectAmount()
     {
-        _effectAmmount = (int)(_effectAmmount + (_effectAmmount / 2) + 1 * _boughtCounter);
-
+        int value = (int) (_boughtCounter * 0.23f);
+        value = (value < 1)? 1 : value;
+        _effectAmmount += value;
     }
 
     public virtual void IncreaseCost()
     {
-        _cost += (int)(baseCost + (_boughtCounter * 75));
+        _cost += (int)(baseCost + (_boughtCounter * 75) + _effectAmmount);
     }
 
     public void IncrementBoughtCounter()
