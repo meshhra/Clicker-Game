@@ -15,8 +15,13 @@ public class IncreaseVelocitySO : ShopItemSO
     
     public override void IncreaseEffectAmount()
     {
-        int value = (int) (_effectAmmount  * 2.456f);
+        int value = (int) (_effectAmmount);
         value = (value < 1)? 0 : value;
         _effectAmmount += value;
+    }
+
+    public override void IncreaseCost()
+    {
+        _cost += (int)(_boughtCounter * 13.45f + _effectAmmount * 2.223f);
     }
 }
