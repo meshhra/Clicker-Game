@@ -219,7 +219,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cdab0114011834fa2711e994702ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickSounds: []
+  clickSounds:
+  - {fileID: 8300000, guid: 37452418a835c81458f2b7ad75aeccc1, type: 3}
+  - {fileID: 8300000, guid: 254ef959620462342bc87eac902b7177, type: 3}
+  - {fileID: 8300000, guid: d21c2cc7cbf01214daba8c6f52983dba, type: 3}
+  - {fileID: 8300000, guid: 91a6e2e45f60bf646999515489602551, type: 3}
 --- !u!82 &262817987
 AudioSource:
   m_ObjectHideFlags: 0
@@ -233,8 +237,8 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.25
+  m_Pitch: 1.38
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -243,7 +247,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: 0.12
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0

@@ -8,6 +8,12 @@ public class AudioManager : MonoBehaviour
 {
     private AudioSource _audioSource;
     [SerializeField] private List<AudioClip> clickSounds = new List<AudioClip>();
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     private void Start()
     {
         Clicker.Instance.OnClickerPressed += Clicker_OnClickerPressed;
@@ -15,6 +21,6 @@ public class AudioManager : MonoBehaviour
 
     private void Clicker_OnClickerPressed()
     {
-        _audioSource.PlayOneShot(clickSounds[Random.Range(0, clickSounds.Count)]);
+        _audioSource.PlayOneShot(clickSounds[Random.Range(0, clickSounds.Count)], 10f);
     }
 }

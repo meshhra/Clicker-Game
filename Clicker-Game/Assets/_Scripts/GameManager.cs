@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
         _clickPower += amount;
     }
 
-    public void IncreaseIdelSppedBy(int amount)
+    public void IncreaseIdelSpeedBy(int amount)
     {
         _additionPerSecond += amount;
     }

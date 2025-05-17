@@ -10,7 +10,7 @@ public class IncreaseVelocitySO : ShopItemSO
 
     public override void ApplyEffect()
     {
-        GameManager.Instance.IncreaseIdelSppedBy(_effectAmmount);
+        GameManager.Instance.IncreaseIdelSpeedBy(_effectAmmount);
     }
 
 }
