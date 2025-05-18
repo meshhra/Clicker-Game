@@ -22,6 +22,6 @@ public class IncreaseClickPowerSO : ShopItemSO
 
     public override void IncreaseCost()
     {
-        _cost += (int)(_boughtCounter * 13.45f * _cost);
+        _cost += (int)(_boughtCounter * 13.45f + _cost * 2f);
     }
 }
